@@ -26,7 +26,7 @@ export default {
         <div class="container page-hero-inner">
           <div class="page-hero-copy">
             <span class="badge badge-light">Produtos</span>
-            <h1>Os produtos da sua Kero</h1>
+            <h1>Os produtos do seu Kero</h1>
             <p>Explore a nossa seleção e descubra as promoções ativas. Preços baixos todos os dias.</p>
           </div>
           <div class="page-hero-media media-box" data-hero-media>

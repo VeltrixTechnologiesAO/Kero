@@ -56,7 +56,10 @@ class Settings(BaseSettings):
     # ─────────── Propriedades derivadas ───────────
     @property
     def admin_allowed_ips_list(self) -> list[str]:
-        return [ip.strip() for ip in self.admin_allowed_ips.split(",") if ip.strip()]
+        raw = (self.admin_allowed_ips or "").strip()
+        if not raw or raw.lower() in ("none", "off", "disabled", "*"):
+            return []
+        return [ip.strip() for ip in raw.split(",") if ip.strip()]
 
     @property
     def is_prod(self) -> bool:

@@ -1,0 +1,97 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .8rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--kero-green);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 135, 58, .22);
+}
+
+.btn-primary:hover {
+  background: var(--kero-green-dark);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--kero-ink);
+  border-color: var(--kero-border);
+}
+
+.btn-ghost:hover { border-color: var(--kero-ink); }
+
+.btn-yellow {
+  background: var(--kero-yellow);
+  color: var(--kero-ink);
+}
+
+.btn-yellow:hover { background: #ffdd45; }
+
+.card {
+  background: #fff;
+  border: 1px solid var(--kero-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.card h3 { margin-top: .5rem; }
+
+.badge {
+  display: inline-block;
+  font-size: .75rem;
+  font-weight: 700;
+  background: rgba(0, 135, 58, .1);
+  color: var(--kero-green);
+  padding: .25rem .7rem;
+  border-radius: 999px;
+}
+
+.section { padding: 4rem 0; }
+
+.section-alt { background: var(--kero-bg-alt); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.link-more { color: var(--kero-green); font-weight: 600; }
+
+.grid { display: grid; gap: 1.5rem; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+.page-loading { min-height: 55vh; display: grid; place-items: center; }
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--kero-border);
+  border-top-color: var(--kero-green);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

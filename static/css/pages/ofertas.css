@@ -1,0 +1,819 @@
+/* ───────── Imagens completas ─────────
+   A imagem nunca é cortada nem esticada: fica sempre inteira (contain).
+   Uma cópia desfocada da mesma imagem preenche o resto da moldura,
+   por isso não aparecem barras vazias.
+   Para mudar o formato de uma moldura basta alterar --ratio nela. */
+.media-box {
+  position: relative;
+  overflow: hidden;
+  background: var(--kero-bg-alt);
+}
+
+.media-box-bg,
+.media-box-img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.media-box-bg {
+  object-fit: cover;
+  transform: scale(1.25);
+  filter: blur(22px) saturate(1.1) brightness(.96);
+  pointer-events: none;
+}
+
+.media-box-img { object-fit: contain; }
+
+.is-broken > .media-box-bg,
+.is-broken > .media-box-img { display: none; }
+
+.media-box.is-broken::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg, var(--kero-bg-alt) 0 12px, #fff 12px 24px);
+}
+
+/* ───────── Hero da página ─────────
+   Texto de um lado, imagem completa do outro. A moldura adota o formato
+   real da imagem (o JS define --ratio), por isso não há cortes nem vazios. */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  isolation: isolate;
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(255, 209, 0, .20) 0%, transparent 60%),
+    linear-gradient(105deg, #04210F 0%, #004A1F 48%, var(--kero-green) 100%);
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--kero-yellow);
+}
+
+.page-hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: clamp(2.5rem, 5vw, 4rem) 1.25rem;
+}
+
+.page-hero-copy { max-width: 560px; }
+.page-hero-copy h1 { color: #fff; font-weight: 900; letter-spacing: -.03em; margin: .75rem 0 1rem; }
+.page-hero-copy p { color: rgba(255, 255, 255, .9); font-size: 1.05rem; max-width: 560px; }
+
+.page-hero-media {
+  --ratio: 16 / 9;
+  width: 100%;
+  aspect-ratio: var(--ratio);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .08);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .35);
+}
+
+
+.badge-light { background: rgba(255, 255, 255, .18); color: #fff; }
+
+.flyers-toolbar-section { padding: 2.5rem 0 0; background: #fff; }
+
+.flyers-toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.flyers-search {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .35rem .5rem .35rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--kero-border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.flyers-search:focus-within {
+  border-color: var(--kero-green);
+  box-shadow: 0 0 0 3px rgba(0, 135, 58, .12);
+}
+
+.flyers-search-icon { color: var(--kero-muted); flex-shrink: 0; }
+.flyers-search-icon svg { width: 18px; height: 18px; }
+
+.flyers-search input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: .75rem 0;
+  font-family: inherit;
+  font-size: .95rem;
+  color: var(--kero-ink);
+  background: transparent;
+  min-width: 0;
+}
+
+.flyers-search input::placeholder { color: var(--kero-muted); }
+.flyers-search input::-webkit-search-cancel-button { display: none; }
+
+.flyers-search-clear {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--kero-bg-alt);
+  color: var(--kero-muted);
+  flex-shrink: 0;
+  transition: background .15s ease, color .15s ease;
+}
+
+.flyers-search-clear:hover { background: rgba(0, 135, 58, .08); color: var(--kero-green); }
+.flyers-search-clear svg { width: 14px; height: 14px; }
+
+.flyers-store-filter {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .35rem .5rem .35rem 1rem;
+  background: #fff;
+  border: 1px solid var(--kero-border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+
+.flyers-store-filter label {
+  font-size: .78rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em;
+  color: var(--kero-muted); flex-shrink: 0;
+}
+
+.flyers-store-filter select {
+  border: 0; outline: none;
+  padding: .65rem .5rem;
+  background: transparent;
+  font-family: inherit; font-size: .9rem;
+  color: var(--kero-ink); font-weight: 500;
+  cursor: pointer; min-width: 180px;
+}
+
+.flyers-filters {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: .5rem; margin: 1.5rem 0 0;
+}
+
+.filter-chip {
+  padding: .5rem 1rem; border-radius: 999px;
+  border: 1px solid var(--kero-border);
+  background: #fff; color: var(--kero-ink);
+  font-size: .85rem; font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.filter-chip:hover { border-color: var(--kero-green); color: var(--kero-green); }
+.filter-chip.is-active { background: var(--kero-green); color: #fff; border-color: var(--kero-green); }
+
+.flyers-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.75rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--kero-border);
+}
+
+.flyers-count { font-size: .9rem; color: var(--kero-muted); font-weight: 600; }
+
+.flyers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.flyers-empty { grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--kero-muted); }
+
+.flyer-card {
+  position: relative;
+  display: flex; flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--kero-border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .05), 0 8px 24px rgba(15, 23, 42, .04);
+  transition: transform .3s cubic-bezier(.22,.61,.36,1),
+              box-shadow .3s cubic-bezier(.22,.61,.36,1),
+              border-color .3s ease;
+}
+
+.flyer-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 135, 58, .3);
+  box-shadow: 0 4px 6px rgba(15, 23, 42, .05),
+              0 24px 48px rgba(0, 135, 58, .18);
+}
+
+/* Capa do folheto: moldura 3:4 (formato de folheto vertical), imagem inteira.
+   Para outro formato basta mudar --ratio. */
+.flyer-card-media {
+  --ratio: 3 / 4;
+  aspect-ratio: var(--ratio);
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  display: block;
+}
+
+.flyer-card-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: .5rem;
+  background: rgba(0, 135, 58, .78);
+  color: #fff; font-weight: 700; font-size: .95rem;
+  opacity: 0; transition: opacity .25s ease; pointer-events: none;
+}
+
+.flyer-card:hover .flyer-card-overlay { opacity: 1; }
+
+.flyer-card-overlay-icon {
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.flyer-card-overlay-icon svg { width: 22px; height: 22px; }
+
+.flyer-region-badge {
+  position: absolute; top: .85rem; left: .85rem;
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .68rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .08em;
+  background: rgba(255, 255, 255, .95);
+  color: var(--kero-ink);
+  padding: .35rem .7rem .35rem .55rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+  z-index: 2;
+}
+
+.flyer-region-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--kero-green);
+  box-shadow: 0 0 0 3px rgba(0, 135, 58, .2);
+  flex-shrink: 0;
+}
+
+.flyer-pages-badge {
+  position: absolute; bottom: .85rem; right: .85rem;
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .72rem; font-weight: 800;
+  background: rgba(15, 23, 42, .82);
+  color: #fff;
+  padding: .3rem .7rem;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+  z-index: 2;
+}
+
+.flyer-pages-badge svg { width: 12px; height: 12px; }
+
+.flyer-card-body {
+  padding: 1.25rem 1.35rem;
+  display: flex; flex-direction: column; gap: .5rem; flex: 1;
+}
+
+.flyer-card-body h3 {
+  margin: 0; font-size: 1.08rem; font-weight: 800;
+  color: var(--kero-ink); letter-spacing: -.015em; line-height: 1.3;
+}
+
+.flyer-card-subtitle {
+  font-size: .82rem; color: var(--kero-muted);
+  margin: 0; font-weight: 500;
+}
+
+.flyer-card-dates {
+  display: flex; align-items: center; gap: .75rem;
+  margin-top: .35rem; padding: .65rem .85rem;
+  background: var(--kero-bg-alt);
+  border-left: 3px solid var(--kero-green);
+  border-radius: var(--radius-sm);
+}
+
+.flyer-card-dates-icon { color: var(--kero-green); flex-shrink: 0; }
+.flyer-card-dates-icon svg { width: 16px; height: 16px; }
+
+.flyer-card-dates-label {
+  display: block; font-size: .65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em; color: var(--kero-muted);
+}
+
+.flyer-card-dates-value {
+  display: block; font-size: .88rem; font-weight: 700; color: var(--kero-ink);
+}
+
+.flyer-days-pill {
+  align-self: flex-start; margin-top: .5rem;
+  font-size: .72rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .05em;
+  color: var(--kero-green);
+  background: rgba(0, 135, 58, .08);
+  padding: .3rem .7rem; border-radius: 999px;
+}
+
+.flyer-days-pill.is-urgent {
+  background: var(--kero-green); color: #fff;
+  animation: pulseUrgent 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseUrgent {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 135, 58, .4); }
+  50%      { box-shadow: 0 0 0 6px rgba(0, 135, 58, 0); }
+}
+
+.flyer-card-foot { padding: 0 1.35rem 1.35rem; }
+
+.flyer-open-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .5rem; width: 100%; padding: .85rem 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #00873A 0%, #006229 100%);
+  color: #fff; font-weight: 700; font-size: .9rem;
+  cursor: pointer; border: 0; font-family: inherit;
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+  box-shadow: 0 6px 14px rgba(0, 135, 58, .22);
+}
+
+.flyer-open-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+  box-shadow: 0 10px 22px rgba(0, 135, 58, .32);
+}
+
+.flyer-open-btn .icon svg { width: 16px; height: 16px; }
+
+/* ═══════════════════════════════════════════════════════
+   Visualizador de revista (multi-página)
+   ═══════════════════════════════════════════════════════ */
+
+.flyer-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #0B1220;
+  display: flex;
+  flex-direction: column;
+  animation: lbIn .25s ease;
+  overscroll-behavior: contain;
+}
+
+.flyer-lightbox[hidden] { display: none !important; }
+
+@keyframes lbIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body.lightbox-open { overflow: hidden; }
+
+/* ─── Header unificado ─── */
+.flyer-lb-header {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: .65rem 1rem;
+  background: linear-gradient(180deg, rgba(15, 23, 42, .95) 0%, rgba(15, 23, 42, .75) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.flyer-lb-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: #fff;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.flyer-lb-icon-btn:hover {
+  background: var(--kero-green);
+  border-color: var(--kero-green);
+  transform: scale(1.05);
+}
+
+.flyer-lb-icon-btn svg { width: 18px; height: 18px; }
+
+.flyer-lb-close {
+  background: rgba(255, 255, 255, .12);
+}
+
+.flyer-lb-heading {
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+  color: #fff;
+  min-width: 0;
+  text-align: center;
+}
+
+.flyer-lb-heading strong {
+  font-size: .95rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flyer-lb-heading span {
+  font-size: .74rem;
+  color: rgba(255, 255, 255, .6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flyer-lb-header-actions {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-shrink: 0;
+}
+
+.flyer-lb-counter {
+  font-size: .82rem;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255, 255, 255, .1);
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+/* ─── Barra de progresso ─── */
+.flyer-lb-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: rgba(255, 255, 255, .06);
+  overflow: hidden;
+}
+
+.flyer-lb-progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--kero-green) 0%, var(--kero-yellow) 100%);
+  border-radius: 0 3px 3px 0;
+  transition: width .35s cubic-bezier(.22,.61,.36,1);
+}
+
+/* ─── Stage ─── */
+.flyer-lb-stage {
+  position: relative;
+  flex: 1;
+  display: flex;
+  padding: 1.5rem 5rem;
+  overflow: hidden;
+  min-height: 0;
+  background:
+    radial-gradient(60% 40% at 50% 50%, rgba(255, 255, 255, .03) 0%, transparent 70%),
+    #0B1220;
+}
+
+/* Área útil da página: ocupa todo o espaço livre com altura definida,
+   para que max-height: 100% na imagem funcione em todos os navegadores. */
+.flyer-lb-pages {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.flyer-lb-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .32s ease;
+}
+
+.flyer-lb-page.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  animation: pageIn .5s cubic-bezier(.22,.61,.36,1) both;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateX(var(--enter-x, 40px)) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.flyer-lb-page img {
+  flex: none;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .6);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.flyer-lb-page.is-broken > img { display: none; }
+
+.flyer-lb-page.is-broken::after {
+  content: "Não foi possível carregar esta página.";
+  color: rgba(255, 255, 255, .7);
+  font-size: .9rem;
+}
+
+/* ─── Navegação ─── */
+.flyer-lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+  color: #fff;
+  cursor: pointer;
+  z-index: 5;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background .15s ease, transform .15s ease, border-color .15s ease;
+}
+
+.flyer-lb-nav svg { width: 22px; height: 22px; }
+
+.flyer-lb-nav:hover {
+  background: var(--kero-green);
+  border-color: var(--kero-green);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.flyer-lb-nav:active { transform: translateY(-50%) scale(.96); }
+
+.flyer-lb-nav-prev { left: 1rem; }
+.flyer-lb-nav-next { right: 1rem; }
+
+/* ─── Footer com thumbnails ─── */
+.flyer-lb-footer {
+  flex-shrink: 0;
+  background: linear-gradient(0deg, rgba(15, 23, 42, .95) 0%, rgba(15, 23, 42, .75) 100%);
+  border-top: 1px solid rgba(255, 255, 255, .06);
+  padding: .65rem 0 .75rem;
+}
+
+.flyer-lb-thumbs {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 0 1rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, .25) transparent;
+  scroll-behavior: smooth;
+}
+
+.flyer-lb-thumbs[hidden] { display: none !important; }
+
+.flyer-lb-thumbs::-webkit-scrollbar { height: 4px; }
+.flyer-lb-thumbs::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, .25);
+  border-radius: 2px;
+}
+
+/* Miniaturas: altura fixa e largura conforme a página, por isso cada
+   miniatura mostra a página inteira, sem corte e sem espaço vazio. */
+.flyer-lb-thumb {
+  position: relative;
+  flex-shrink: 0;
+  display: block;
+  height: 74px;
+  min-width: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, .05);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.flyer-lb-thumb img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+  pointer-events: none;
+  opacity: .65;
+  transition: opacity .15s ease;
+}
+
+.flyer-lb-thumb.is-broken { width: 56px; }
+.flyer-lb-thumb.is-broken img { visibility: hidden; }
+
+.flyer-lb-thumb:hover img { opacity: 1; }
+
+.flyer-lb-thumb:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, .45); }
+
+.flyer-lb-thumb.is-active {
+  border-color: var(--kero-green);
+  box-shadow: 0 0 0 3px rgba(0, 135, 58, .35);
+}
+
+.flyer-lb-thumb.is-active img { opacity: 1; }
+
+/* ─── Dots (para poucas páginas) ─── */
+.flyer-lb-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: .55rem 1rem 0;
+}
+
+.flyer-lb-dots[hidden] { display: none !important; }
+
+.flyer-lb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .25);
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease, width .2s ease;
+}
+
+.flyer-lb-dot:hover { background: rgba(255, 255, 255, .55); }
+
+.flyer-lb-dot.is-active {
+  background: var(--kero-green);
+  width: 20px;
+  border-radius: 999px;
+  transform: none;
+}
+
+/* ─── Botão fechar inferior (mobile) ─── */
+.flyer-lb-close-bottom {
+  display: none;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, .08);
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: .02em;
+  transition: background .15s ease;
+}
+
+.flyer-lb-close-bottom:hover { background: var(--kero-green); }
+
+/* ═══════════════════════════════════════════════════════
+   Responsivo
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .flyers-toolbar { grid-template-columns: 1fr; }
+
+  .flyers-store-filter {
+    border-radius: var(--radius);
+    padding: .35rem .75rem;
+  }
+
+  .flyers-store-filter select { min-width: 0; width: 100%; }
+
+  /* Hero empilhado: imagem completa em cima, texto por baixo */
+  .page-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .page-hero-media { order: -1; }
+  .page-hero-copy { max-width: none; }
+}
+
+@media (max-width: 760px) {
+  .page-hero-copy h1 {
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+    margin: .5rem 0;
+  }
+
+  .page-hero-copy p { font-size: .95rem; line-height: 1.55; }
+  .page-hero-media { border-radius: var(--radius-sm); }
+
+  .flyers-filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: .5rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .flyers-filters::-webkit-scrollbar { display: none; }
+  .filter-chip { white-space: nowrap; flex-shrink: 0; }
+
+  /* ─── Lightbox mobile ─── */
+  .flyer-lb-header {
+    grid-template-columns: auto 1fr auto;
+    padding: .5rem .75rem;
+    gap: .5rem;
+  }
+
+  .flyer-lb-icon-btn { width: 38px; height: 38px; }
+  .flyer-lb-icon-btn svg { width: 16px; height: 16px; }
+
+  .flyer-lb-heading strong { font-size: .85rem; }
+  .flyer-lb-heading span { font-size: .7rem; }
+
+  .flyer-lb-counter { font-size: .74rem; padding: .3rem .6rem; }
+
+  .flyer-lb-stage {
+    padding: 0;
+    background: #000;
+  }
+
+  .flyer-lb-page img {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .flyer-lb-nav {
+    width: 42px;
+    height: 42px;
+    background: rgba(0, 0, 0, .55);
+    border-color: rgba(255, 255, 255, .15);
+  }
+
+  .flyer-lb-nav svg { width: 18px; height: 18px; }
+  .flyer-lb-nav-prev { left: .5rem; }
+  .flyer-lb-nav-next { right: .5rem; }
+
+  .flyer-lb-footer { padding: .5rem 0 .55rem; }
+  .flyer-lb-thumb { height: 62px; min-width: 28px; }
+  .flyer-lb-thumbs { padding: 0 .75rem; gap: .4rem; }
+
+  .flyer-lb-close-bottom { display: block; }
+}
+
+@media (max-width: 520px) {
+  .flyers-grid { grid-template-columns: 1fr; }
+
+  .flyer-lb-heading span { display: none; }
+  .flyer-lb-nav { width: 38px; height: 38px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flyer-days-pill.is-urgent { animation: none; }
+  .flyer-lb-page.is-active { animation: none; }
+  .flyer-lb-page { transition: none; }
+}

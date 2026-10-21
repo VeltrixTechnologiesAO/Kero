@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Entrar — Admin Kero Angola</title>
+  <link rel="icon" href="/static/assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="stylesheet" href="/static/admin/admin.css" />
+</head>
+<body class="admin-login-body">
+
+  <div class="admin-login-card">
+    <div class="admin-login-brand">
+      <img src="/static/assets/logo.png" alt="Kero" />
+      <h1>Kero Angola</h1>
+      <p>Painel de controlo</p>
+    </div>
+
+    {% if error %}
+      <div class="admin-alert admin-alert-error">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+        {{ error }}
+      </div>
+    {% endif %}
+
+    <form method="post" action="/admin/login" class="admin-login-form" autocomplete="on">
+      <div class="admin-field">
+        <label for="username">Utilizador</label>
+        <input id="username" name="username" type="text" required autofocus
+               autocomplete="username" value="{{ username or '' }}" />
+      </div>
+
+      <div class="admin-field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required
+               autocomplete="current-password" />
+      </div>
+
+      <button type="submit" class="admin-btn admin-btn-primary">
+        Entrar
+      </button>
+    </form>
+
+    <p class="admin-login-note">
+      Este é um sistema privado. O acesso é registado e auditado.
+    </p>
+  </div>
+
+</body>
+</html>

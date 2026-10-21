@@ -1,0 +1,407 @@
+.privacy-hero {
+  position: relative;
+  padding: 4.5rem 0 3.5rem;
+  background:
+    radial-gradient(60% 60% at 90% 0%, rgba(255, 209, 0, .12) 0%, transparent 55%),
+    radial-gradient(50% 50% at 0% 100%, rgba(0, 135, 58, .08) 0%, transparent 60%),
+    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  border-bottom: 1px solid var(--kero-border);
+}
+
+.privacy-hero-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.privacy-hero-copy { max-width: 720px; }
+
+.privacy-hero-copy h1 {
+  margin: .75rem 0 .75rem;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  letter-spacing: -.025em;
+}
+
+.privacy-hero-meta {
+  font-size: .9rem;
+  color: var(--kero-muted);
+  margin: 0;
+}
+
+.privacy-hero-meta strong { color: var(--kero-ink); }
+
+.privacy-hero-actions {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+.privacy-print-btn { gap: .5rem; }
+
+.privacy-print-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.privacy-doc {
+  padding: 4rem 0 5rem;
+}
+
+.privacy-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 4rem;
+  align-items: start;
+}
+
+.privacy-toc {
+  position: sticky;
+  top: 90px;
+  padding: 1.5rem;
+  background: var(--kero-bg-alt);
+  border: 1px solid var(--kero-border);
+  border-radius: var(--radius);
+}
+
+.privacy-toc h2 {
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--kero-ink);
+  margin: 0 0 1rem;
+  padding-bottom: .6rem;
+  border-bottom: 2px solid var(--kero-green);
+  display: inline-block;
+}
+
+.privacy-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  counter-reset: toc;
+}
+
+.privacy-toc li {
+  counter-increment: toc;
+  font-size: .85rem;
+}
+
+.privacy-toc a {
+  display: block;
+  padding: .5rem .65rem;
+  border-radius: var(--radius-sm);
+  color: var(--kero-muted);
+  transition: color .15s ease, background .15s ease, padding-left .15s ease;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.privacy-toc a::before {
+  content: counter(toc, upper-alpha) " — ";
+  color: var(--kero-green);
+  font-weight: 800;
+}
+
+.privacy-toc a:hover {
+  color: var(--kero-green);
+  background: #fff;
+  padding-left: 10px;
+}
+
+.privacy-content {
+  max-width: 780px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #334155;
+}
+
+.privacy-content p {
+  margin: 0 0 1.15rem;
+  color: #334155;
+}
+
+.privacy-content em { color: #334155; font-style: italic; }
+.privacy-content strong { color: var(--kero-ink); }
+
+.privacy-content h2 {
+  margin: 3.5rem 0 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--kero-border);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--kero-ink);
+  scroll-margin-top: 100px;
+}
+
+.privacy-content h2:first-of-type {
+  margin-top: 2rem;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.privacy-content h3 {
+  margin: 2rem 0 .85rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--kero-ink);
+  letter-spacing: -.01em;
+}
+
+.privacy-content ul {
+  padding: 0;
+  margin: 0 0 1.35rem;
+  list-style: none;
+}
+
+.privacy-content ul li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: .85rem;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.privacy-content ul li::before {
+  content: "";
+  position: absolute;
+  left: .25rem;
+  top: .8em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--kero-green);
+  flex-shrink: 0;
+}
+
+.legal-sublist {
+  margin: .75rem 0 .25rem !important;
+}
+
+.legal-sublist li {
+  padding-left: 1.5rem !important;
+  font-size: .95rem;
+  margin-bottom: .35rem !important;
+}
+
+.legal-sublist li::before {
+  width: 4px !important;
+  height: 4px !important;
+  background: var(--kero-muted) !important;
+  top: .85em !important;
+}
+
+.legal-caps {
+  font-size: .85rem;
+  line-height: 1.7;
+  letter-spacing: .01em;
+  color: #1e293b;
+  font-weight: 500;
+  padding: .85rem 1rem;
+  background: rgba(15, 23, 42, .03);
+  border-left: 3px solid var(--kero-ink);
+  border-radius: var(--radius-sm);
+}
+
+.legal-caps::before { display: none !important; }
+
+.legal-caps-inline {
+  font-size: .88em;
+  letter-spacing: .01em;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.privacy-lead {
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 135, 58, .04);
+  border-left: 3px solid var(--kero-green);
+  border-radius: var(--radius-sm);
+  font-size: .95rem;
+  margin-bottom: 2rem !important;
+}
+
+.privacy-footnote {
+  margin-top: 3rem !important;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--kero-border);
+  font-size: .82rem;
+  color: var(--kero-muted);
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .privacy-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .privacy-toc {
+    position: static;
+    display: none;
+  }
+
+  .privacy-content h2 { scroll-margin-top: 80px; }
+}
+
+@media (max-width: 640px) {
+  .privacy-hero { padding: 3rem 0 2.5rem; }
+
+  .privacy-hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .privacy-hero-actions { width: 100%; }
+  .privacy-print-btn { width: 100%; justify-content: center; }
+
+  .privacy-doc { padding: 2.5rem 0 3rem; }
+  .privacy-content { font-size: .95rem; }
+  .privacy-content h2 { font-size: 1.25rem; margin-top: 2.5rem; }
+  .privacy-content h3 { font-size: 1rem; }
+  .privacy-lead { padding: 1rem 1.15rem; font-size: .9rem; }
+  .legal-caps { font-size: .78rem; padding: .75rem; }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 20mm 18mm 22mm;
+  }
+
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+
+  .site-header,
+  .site-footer,
+  .topbar,
+  .privacy-toc,
+  .privacy-hero-actions,
+  .menu-toggle,
+  .lang-select,
+  .whatsapp-btn,
+  .footer-bottom { display: none !important; }
+
+  .privacy-hero {
+    padding: 0 0 6mm;
+    border-bottom: 1.5pt solid #000;
+    background: none !important;
+    page-break-after: avoid;
+  }
+
+  .privacy-hero-inner {
+    display: block;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .privacy-hero-copy h1 {
+    font-family: 'Georgia', serif;
+    font-size: 19pt;
+    margin: 0 0 3mm;
+    letter-spacing: -.01em;
+  }
+
+  .privacy-hero-meta { font-size: 9pt; color: #333 !important; }
+
+  .badge { display: none !important; }
+
+  .privacy-doc { padding: 0 !important; }
+
+  .privacy-layout {
+    display: block;
+    gap: 0;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .privacy-content {
+    max-width: 100%;
+    font-size: 10pt;
+  }
+
+  .privacy-content p,
+  .privacy-content ul li,
+  .legal-sublist li {
+    color: #000 !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .privacy-content h2 {
+    font-family: 'Georgia', serif;
+    font-size: 13pt;
+    margin: 7mm 0 3mm;
+    padding-top: 3mm;
+    border-top: .5pt solid #000;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  .privacy-content h3 {
+    font-size: 11pt;
+    margin: 5mm 0 2.5mm;
+    page-break-after: avoid;
+  }
+
+  .privacy-content ul li::before {
+    background: #000 !important;
+    width: 4pt;
+    height: 4pt;
+    top: 5pt;
+  }
+
+  .legal-sublist li::before {
+    width: 3pt !important;
+    height: 3pt !important;
+  }
+
+  .legal-caps {
+    font-size: 9pt;
+    padding: 3mm;
+    background: #f5f5f5 !important;
+    border-left: 3pt solid #000;
+    page-break-inside: avoid;
+  }
+
+  .privacy-lead {
+    padding: 4mm;
+    background: #f5f5f5 !important;
+    border-left: 3pt solid #000;
+    page-break-inside: avoid;
+  }
+
+  .privacy-footnote {
+    margin-top: 8mm !important;
+    padding-top: 3mm;
+    border-top: .5pt solid #000;
+    font-size: 9pt;
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: none;
+  }
+
+  .container {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+}

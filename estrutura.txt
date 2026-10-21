@@ -1,0 +1,116 @@
+kero/
+│
+├── main.py                                    [IGUAL]
+├── config.py                                  [IGUAL]
+├── requirements.txt                           [IGUAL]
+│
+├── core/                                      [IGUAL]
+│   ├── logging.py
+│   ├── middleware.py
+│   ├── rate_limit.py
+│   ├── admin_middleware.py
+│   └── admin_security.py
+│
+├── db/                                        [IGUAL]
+│   ├── base.py
+│   └── models.py
+│
+├── routers/                                   [IGUAL]
+│   ├── admin.py
+│   ├── api_contact.py
+│   ├── api_flyers.py
+│   ├── api_recipes.py
+│   ├── api_stores.py
+│   └── api_competitions.py
+│
+├── schemas/                                   [IGUAL]
+│   ├── admin.py
+│   ├── competition.py
+│   ├── contact.py
+│   ├── flyer.py
+│   ├── recipe.py
+│   └── store.py
+│
+├── services/                                  [IGUAL]
+│   ├── admin_auth.py
+│   ├── admin_content.py
+│   ├── admin_dashboard.py
+│   ├── admin_users.py
+│   ├── audit.py
+│   ├── competitions.py
+│   ├── contact.py
+│   ├── flyer_images.py
+│   ├── flyers.py
+│   ├── recipes.py
+│   └── stores.py
+│
+├── templates/                                 [IGUAL]
+│   ├── index.html
+│   ├── admin.html
+│   └── login.html
+│
+└── static/                                    ← frontend
+    │
+    ├── assets/                                [IGUAL]
+    │   ├── logo.png
+    │   ├── image_logo.png
+    │   ├── image_compra.png
+    │   ├── image_flyers.png
+    │   ├── image_recite.png
+    │   ├── image_competicao.png
+    │   ├── image_contact.png
+    │   ├── image_shope.png
+    │   ├── image_mercado.png
+    │   ├── image_saude.png
+    │   ├── image_lovies.png
+    │   ├── image_talho.png
+    │   ├── image_bebidas.png
+    │   ├── image_agricultura.png
+    │   └── ... (restantes imagens de conteúdo)
+    │
+    ├── css/                                   [IGUAL]
+    │   ├── base.css
+    │   ├── layout.css
+    │   ├── components.css
+    │   └── pages/
+    │       ├── home.css
+    │       ├── ofertas.css
+    │       ├── receitas.css
+    │       ├── lojas.css
+    │       ├── sobre.css
+    │       ├── contacto.css
+    │       ├── competicoes.css
+    │       ├── mercado-monetario.css
+    │       ├── saude-beleza.css
+    │       ├── lovies.css
+    │       ├── talho.css
+    │       ├── bebidas.css
+    │       ├── agricultura.css
+    │       ├── privacidade.css
+    │       └── termos.css
+    │
+    ├── admin/                                 [IGUAL]
+    │   └── admin.css
+    │
+    └── js/                                    ← aqui está a mudança
+        │
+        ├── app.js                             [EDITAR]
+        ├── router.js                          [EDITAR]
+        │
+        │
+        └── pages/                             [EDITAR um a um]
+            ├── home.js                        [EDITAR]
+            ├── ofertas.js                     [EDITAR]
+            ├── receitas.js                    [EDITAR]
+            ├── lojas.js                       [EDITAR]
+            ├── sobre.js                       [EDITAR]
+            ├── contacto.js                    [EDITAR]
+            ├── competicoes.js                 [EDITAR]
+            ├── mercado-monetario.js           [EDITAR]
+            ├── saude-beleza.js                [EDITAR]
+            ├── lovies.js                      [EDITAR]
+            ├── talho.js                       [EDITAR]
+            ├── bebidas.js                     [EDITAR]
+            ├── agricultura.js                 [EDITAR]
+            ├── privacidade.js                 [IGUAL]
+            └── termos.js                      [IGUAL]

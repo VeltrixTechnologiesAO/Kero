@@ -142,7 +142,7 @@ export default {
           <div class="section-head section-head-center">
             <div>
               <span class="badge">Compromissos</span>
-              <h2>Porquê escolher a Kero</h2>
+              <h2>Porquê escolher o Kero</h2>
               <p class="section-sub">Trabalhamos todos os dias para lhe oferecer mais valor em cada visita.</p>
             </div>
           </div>

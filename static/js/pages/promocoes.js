@@ -18,7 +18,7 @@ export default {
         <div class="container page-hero-inner">
           <div class="page-hero-copy">
             <span class="badge badge-light">Promoções</span>
-            <h1>Promoções ativas na Kero</h1>
+            <h1>Promoções ativas no Kero</h1>
             <p>Descubra todas as promoções em vigor — produtos específicos e campanhas gerais. Aproveite antes que terminem.</p>
           </div>
           <div class="page-hero-media media-box" data-hero-media>
